@@ -76,3 +76,19 @@ Route::prefix('admin')->group(function () {
         return 'user3';
     });
 });
+Route::get('test-view', function () {
+    return view('test-view.view1');
+});
+
+//View share su dung cho nhieu title chung
+View::share('title', 'My Laravel');
+
+//Share cho view chi dinh
+View::composer('test-view/view1', function ($view) {
+    return $view->with('value', 'Hello123');
+});
+
+//Check view exists
+Route::get('check-view', function () {
+    echo view()->exists('test-view/view2');
+});
