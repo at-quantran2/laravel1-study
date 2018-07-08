@@ -92,3 +92,10 @@ View::composer('test-view/view1', function ($view) {
 Route::get('check-view', function () {
     echo view()->exists('test-view/view2');
 });
+
+//Test blade
+Route::get('test-blade', function () {
+    // return view('test-extends.master');
+    // return view('test-extends.sub');
+    return view('test-extends.layout');
+});

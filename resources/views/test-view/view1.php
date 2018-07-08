@@ -8,6 +8,5 @@
   </head>
   <body>
     <h1>Hello <?php echo $value; ?></h1>
-  
   </body>
 </html>
