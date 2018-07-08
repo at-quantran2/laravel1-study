@@ -8,5 +8,12 @@
 @stop
 
 @section('content')
-  Day la trang sub
+    @for ($i = 0; $i < 10; $i++)
+        Hello {{ $i }} <br>
+    @endfor
+    <hr>
+    <?php $arr = ['one', 'two', 'three'] ?>
+    @foreach ($arr as $ax)
+        {{ $ax }} ,
+    @endforeach
 @stop

@@ -97,5 +97,5 @@ Route::get('check-view', function () {
 Route::get('test-blade', function () {
     // return view('test-extends.master');
     // return view('test-extends.sub');
-    return view('test-extends.layout');
+    return view('test-extends.sub');
 });
