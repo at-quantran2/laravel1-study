@@ -30,7 +30,7 @@ Route::get('courses/{sub?}',function($subject = 'default subject') {
 
 Route::get('people/{name}/{age}',function($name, $age) {
     return "Hello $name is $age";
-})->where(['name' => '[a-zA-Z]+', 'age' => '[0-9]{5}']);
+})->where(['name' => '[a-zA-Z]+', 'age' => '[0-9]{1}']);
 
 Route::get('user/{id}', function ($id) {
     return "User $id";
@@ -96,6 +96,26 @@ Route::get('check-view', function () {
 //Test blade
 Route::get('test-blade', function () {
     // return view('test-extends.master');
-    // return view('test-extends.sub');
     return view('test-extends.sub');
+    // return view('test-extends.sub');
+});
+
+//Get URL absolute
+Route::get('url/full', function () {
+    // return URL::full();
+    return url()->full();
+});
+
+//Get Asset https
+Route::get('url/1asset', function () {
+    // return URL::full();
+    return secure_asset('template/css/main.css');
+});
+
+//Truyen bien vao URL
+Route::get('url/to', function () {
+    
+    echo 'top';
+    // return route('people', ['quan', '8']);
+
 });
