@@ -2,6 +2,7 @@
 @section('title')
     Sub
 @stop
+@include('test-extends.nhung', ['mar_content' => 'Sub marrquee'])
 @section('header')
     @parent
     Sub header
