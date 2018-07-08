@@ -36,6 +36,43 @@ Route::get('user/{id}', function ($id) {
     return "User $id";
 })->where('id', '[0-9]+');
 
+//validate
 Route::get('user/{id}/{name}', function ($id, $name) {
     //
 })->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+Route::get('test', function() {
+    $var = 'Tran Hong Quan';
+    return view('test',compact('var'));
+});
+
+//Goi Controller
+Route::get('testController', 'Controller@testAction');
+
+//Goi Dinh danh => Dung trong form hay chuyen huong trang
+Route::get('test-dinh-danh', ['as'=> 'thq', function() {
+    return 'hello dinh danh';
+}]);
+
+//Group route
+Route::group(['prefix' => 'category'], function() {
+    Route::get('item1', function() {
+        return 'Item1';
+    }); 
+    Route::get('item2', function() {
+        return 'Item2';
+    }); 
+    Route::get('item3', function() {
+        return 'Item3';
+    }); 
+});
+Route::prefix('admin')->group(function () {
+    Route::get('users1', function () {
+        return 'user1';
+    });
+    Route::get('users2', function () {
+        return 'user2';
+    });
+    Route::get('users3', function () {
+        return 'user3';
+    });
+});

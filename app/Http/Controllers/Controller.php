@@ -13,4 +13,8 @@ class Controller extends BaseController
     public function showinfor() {
         return view('top.top1');
     }
+    public function testAction() {
+        echo 'test succesfully';
+        return redirect()->route('thq');
+    }
 }
