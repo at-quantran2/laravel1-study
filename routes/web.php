@@ -172,7 +172,7 @@ Route::get('schema/create/product', function () {
         $table->string('name');
         $table->integer('price');
         $table->integer('cate_id')->unsigned();
-        $table->foreign('cate_id')->references('id')->on('category');
+        $table->foreign('cate_id')->references('id')->on('category')->onDelete('cascade');
         $table->timestamps();
     });
 });
