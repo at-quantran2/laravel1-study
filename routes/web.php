@@ -119,3 +119,14 @@ Route::get('url/to', function () {
     // return route('people', ['quan', '8']);
 
 });
+
+//Schema Builder
+Route::get('schema/create', function () {
+    Schema::create('top', function ($table) {
+        $table->increments('id');
+        $table->string('course_name');
+        $table->integer('const');
+        $table->text('note')->nullalbe();
+        $table->timestamps();
+    });
+});
