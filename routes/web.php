@@ -156,3 +156,23 @@ Route::get('schema/del-col', function () {
         $table->dropColumn(['id', 'courseName']);
     });
 });
+
+// Create foreign key
+Route::get('schema/create/cate', function () {
+    Schema::create('category', function($table) {
+        $table->increments('id');
+        $table->string('name');
+        $table->timestamps();
+    });
+});
+// Create foreign key from product to category
+Route::get('schema/create/product', function () {
+    Schema::create('product', function($table) {
+        $table->increments('id');
+        $table->string('name');
+        $table->integer('price');
+        $table->integer('cate_id')->unsigned();
+        $table->foreign('cate_id')->references('id')->on('category');
+        $table->timestamps();
+    });
+});
