@@ -148,3 +148,11 @@ Route::get('schema/change-table', function () {
         $table->renameColumn('course_name', 'courseName');
     });
 });
+
+// Delete a column
+Route::get('schema/del-col', function () {
+    Schema::table('top', function ($table) {
+        // $table->dropColumn('const');
+        $table->dropColumn(['id', 'courseName']);
+    });
+});
