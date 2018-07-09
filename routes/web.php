@@ -126,7 +126,25 @@ Route::get('schema/create', function () {
         $table->increments('id');
         $table->string('course_name');
         $table->integer('const');
-        $table->text('note')->nullalbe();
+        $table->text('note')->nullable();
         $table->timestamps();
+    });
+});
+
+//Rename Table
+Route::get('schema/rename', function () {
+    Schema::rename('top', 'thq');
+});
+
+//Drop table
+Route::get('schema/drop', function () {
+    Schema::dropIfExists('thq');
+});
+
+//Alt table
+Route::get('schema/change-table', function () {
+    Schema::table('top', function ($table) {
+        // $table->string('course_name', 100)->change();
+        $table->renameColumn('course_name', 'courseName');
     });
 });
