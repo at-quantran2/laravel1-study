@@ -11,6 +11,8 @@
 |
 */
 
+use App\Product;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -265,3 +267,16 @@ Route::get('query/delete', function () {
     return 'Success';
 });
 
+Route::get('model/select-all', function () {
+    $data = Product::all()->tojSon();
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+});
+Route::get('model/selectId', function () {
+    // $data = Product::find(20)->toArray();
+    $data = Product::findOrFail(2110)->toArray();
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+});
