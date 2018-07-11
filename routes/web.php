@@ -240,3 +240,28 @@ Route::get('query/join', function () {
     print_r ($data);
     echo '</pre>';
 });
+Route::get('query/insert', function () {
+    DB::table('product')->insert([
+        'name' => 'Quan Hong', 'price' => 3333, 'cate_id' => 2
+    ]);
+    return  'Success';
+});
+Route::get('query/insert-getId', function () {
+    $id = DB::table('product')->insertGetId([
+        'name' => 'Quan Bo Cam', 'price' => 77, 'cate_id' => 2
+    ]);
+    echo $id;
+});
+Route::get('query/update', function () {
+    $id = DB::table('product')
+    ->where('id', 15)
+    -> update(['name' => 'Ao Gio']);
+    return 'Success';
+});
+Route::get('query/delete', function () {
+    $id = DB::table('product')
+    ->where('id', 16)
+    ->delete();
+    return 'Success';
+});
+
