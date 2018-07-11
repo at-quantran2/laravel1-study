@@ -176,3 +176,26 @@ Route::get('schema/create/product', function () {
         $table->timestamps();
     });
 });
+
+//Query Builder Study
+Route::get('query/select-all', function () {
+    $data = DB::table('product')->get();
+    echo '<pre>';
+    print_r ($data);
+    echo '</pre>';
+});
+Route::get('query/select-column', function () {
+    $data = DB::table('product')->select('name')->where('id', 8)->get();
+    echo '<pre>';
+    print_r ($data);
+    echo '</pre>';
+});
+Route::get('query/where-or', function () {
+    $data = DB::table('product')
+        ->where('cate_id', 100)
+        ->orWhere('price', 4444400)
+        ->get();
+    echo '<pre>';
+    print_r ($data);
+    echo '</pre>';
+});
