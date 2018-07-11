@@ -12,6 +12,7 @@
 */
 
 use App\Product;
+use App\Images;
 
 Route::get('/', function () {
     return view('welcome');
@@ -335,6 +336,21 @@ Route::get('model/update', function () {
 Route::get('model/delete', function () {
     Product::destroy(25);
     return 'Destroy finished';
+});
+
+//Eloquent relationship
+Route::get('relation/one-many', function () {
+    $images = Product::find(26)->images->toArray();
+    echo '<pre>' ;
+    print_r($images);
+    echo '</pre>';
+});
+Route::get('relation/belong-to', function () {
+    // $product = Images::find(8)->product->toArray();
+    $product = Images::find(8)->product->toArray();
+    echo '<pre>' ;
+    print_r($product);
+    echo '</pre>';
 });
 
 
