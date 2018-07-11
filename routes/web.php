@@ -302,9 +302,9 @@ Route::get('model/count', function () {
     print_r($data);
     echo '</pre>';
 });
-Route::get('model/raw', function () {
+Route::get('model/raw', function (Product $a) {
     $price = 2400;
-    $data = Product::whereRaw('price < ? and id < ?', [$price, 10])
+    $data = $a::whereRaw('price < ? and id < ?', [$price, 10])
     ->get()
     ->tojSon();
     echo '<pre>';
