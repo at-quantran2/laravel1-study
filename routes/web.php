@@ -114,8 +114,8 @@ Route::get('url/1asset', function () {
 
 //Truyen bien vao URL
 Route::get('url/to', function () {
-    
     echo 'top';
+
     // return route('people', ['quan', '8']);
 
 });
