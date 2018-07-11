@@ -14,11 +14,12 @@ class DatabaseSeeder extends Seeder
         // $this->call(ProductTableSeeder::class);
         // $this->call(NewsTableSeeder::class);
         // $this->call(CateNewsTableSeeder::class);
-        $this->call(ImagesTableSeeder::class);
-        // $this->call([
-        //     ProductTableSeeder::class,
-        //     CateNewsTableSeeder::class
-        // ]);
+        // $this->call(ImagesTableSeeder::class);
+        $this->call([
+            CarsTableSeeder::class,
+            ColorsTableSeeder::class,
+            CarColorsTableSeeder::class,
+        ]);
     }
 }
 class ProductTableSeeder extends Seeder
@@ -74,3 +75,43 @@ class ImagesTableSeeder extends Seeder
         ]);
     }
 }
+class CarsTableSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('cars')->insert([
+            ['name' =>'Honda', 'price' => 100000],
+            ['name' =>'Toyota', 'price' => 150000],
+            ['name' =>'BMW', 'price' => 300000],
+            ['name' =>'Suzuki', 'price' => 250000],
+            ['name' =>'Audi', 'price' => 69000]
+        ]);
+    }
+}
+class ColorsTableSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('colors')->insert([
+            ['name' =>'Red'],
+            ['name' =>'Blue'],
+            ['name' =>'Green'],
+            ['name' =>'White']
+        ]);
+    }
+}
+class CarColorsTableSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('car_colors')->insert([
+            ['car_id' => 1, 'color_id' => 1],
+            ['car_id' => 2, 'color_id' => 1],
+            ['car_id' => 3, 'color_id' => 1],
+            ['car_id' => 2, 'color_id' => 3],
+            ['car_id' => 4, 'color_id' => 3],
+            ['car_id' => 2, 'color_id' => 5]
+        ]);
+    }
+}
+

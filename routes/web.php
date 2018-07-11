@@ -13,6 +13,8 @@
 
 use App\Product;
 use App\Images;
+use App\Colors;
+use App\Cars;
 
 Route::get('/', function () {
     return view('welcome');
@@ -345,11 +347,12 @@ Route::get('relation/one-many', function () {
     print_r($images);
     echo '</pre>';
 });
-Route::get('relation/belong-to', function () {
-    // $product = Images::find(8)->product->toArray();
-    $product = Images::find(8)->product->toArray();
+Route::get('relation/many-to-many', function () {
+    // $car = Colors::find(1)->car()->get()->toArray();
+    // $car = Cars::find(2)->color()->select('name')->get()->toArray();
+    $car = Colors::find(2)->car()->select('name')->get()->toArray();
     echo '<pre>' ;
-    print_r($product);
+    print_r($car);
     echo '</pre>';
 });
 
