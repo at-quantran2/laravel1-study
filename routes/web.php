@@ -280,3 +280,36 @@ Route::get('model/selectId', function () {
     print_r($data);
     echo '</pre>';
 });
+Route::get('model/where', function () {
+    // $data = Product::find(20)->toArray();
+    $data = Product::where('name', 'Quan Xanh')->toArray();
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+});
+Route::get('model/take', function () {
+    $data = Product::where('id', '>', 10)
+    ->take(5)
+    ->get() 
+    ->toArray();
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+});
+Route::get('model/count', function () {
+    $data = Product::all()->count();
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+});
+Route::get('model/raw', function () {
+    $price = 2400;
+    $data = Product::whereRaw('price < ? and id < ?', [$price, 10])
+    ->get()
+    ->tojSon();
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+});
+
+
