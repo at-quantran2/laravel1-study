@@ -312,4 +312,29 @@ Route::get('model/raw', function (Product $a) {
     echo '</pre>';
 });
 
+Route::get('model/insert', function () {
+    $product = new Product;
+    $product->name = 'Quan kaki';
+    $product->price = 25000;
+    $product->cate_id = 2;
+    $product->save();
+    return 'Insert Success!';
+});
+Route::get('model/create', function () {
+    $data = ['name' => 'Ao Gach', 'price' => 2900, 'cate_id' => 1];
+    
+    Product::create($data);
+    return 'Finished';
+    
+});
+Route::get('model/update', function () {
+    $product = Product::find(25);
+    $product->price = 1;
+    $product->save();
+});
+Route::get('model/delete', function () {
+    Product::destroy(25);
+    return 'Destroy finished';
+});
+
 
