@@ -224,3 +224,10 @@ Route::get('query/where-in', function () {
     print_r ($data);
     echo '</pre>';
 });
+Route::get('query/count', function () {
+    $data = DB::table('product')->max('price');
+    $data1 = DB::table('product')->where('price',$data)->take(1)->get();
+    echo '<pre>';
+    print_r ($data1);
+    echo '</pre>';
+});
