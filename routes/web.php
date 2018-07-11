@@ -199,3 +199,28 @@ Route::get('query/where-or', function () {
     print_r ($data);
     echo '</pre>';
 });
+Route::get('query/order', function () {
+    $data = DB::table('product')
+        ->orderBy('price','DESC')
+        ->get();
+    echo '<pre>';
+    print_r ($data);
+    echo '</pre>';
+});
+Route::get('query/skip', function () {
+    $data = DB::table('product')
+        ->skip(2)
+        ->take(3)
+        ->get();
+    echo '<pre>';
+    print_r ($data);
+    echo '</pre>';
+});
+Route::get('query/where-in', function () {
+    $data = DB::table('product')
+        ->whereIn('id', [2,4])
+        ->get();
+    echo '<pre>';
+    print_r ($data);
+    echo '</pre>';
+});
