@@ -11,7 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(ProductTableSeeder::class);
+        // $this->call(ProductTableSeeder::class);
+        // $this->call(NewsTableSeeder::class);
+        $this->call(CateNewsTableSeeder::class);
+        // $this->call([
+        //     ProductTableSeeder::class,
+        //     CateNewsTableSeeder::class
+        // ]);
     }
 }
 class ProductTableSeeder extends Seeder
@@ -26,5 +32,28 @@ class ProductTableSeeder extends Seeder
             ['name' => 'item55', 'price' => 2600, 'cate_id' => 2],
             ['name' => 'item66', 'price' => 2700, 'cate_id' => 2]]
         );
+    }
+}
+class CateNewsTableSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('cate_news')->insert([
+            ['name' => 'World'],
+            ['name' => 'Music'],
+            ['name' => 'Sport']]
+        );
+    }
+}
+class NewsTableSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('news')->insert([
+            ['title' => str_random(10), 'intro' => 'This is title 1', 'cate_id' => 1],
+            ['title' => str_random(10), 'intro' => 'This is title 2', 'cate_id' => 1],
+            ['title' => str_random(10), 'intro' => 'This is title 3', 'cate_id' => 1],
+            ['title' => str_random(10), 'intro' => 'This is title 4', 'cate_id' => 1],
+        ]);
     }
 }

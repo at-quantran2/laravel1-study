@@ -159,20 +159,20 @@ Route::get('schema/del-col', function () {
 
 // Create foreign key
 Route::get('schema/create/cate', function () {
-    Schema::create('category', function($table) {
+    Schema::create('cate_news', function($table) {
         $table->increments('id');
         $table->string('name');
         $table->timestamps();
     });
 });
 // Create foreign key from product to category
-Route::get('schema/create/product', function () {
-    Schema::create('product', function($table) {
+Route::get('schema/create/news', function () {
+    Schema::create('news', function($table) {
         $table->increments('id');
-        $table->string('name');
-        $table->integer('price');
+        $table->string('title');
+        $table->string('intro');
         $table->integer('cate_id')->unsigned();
-        $table->foreign('cate_id')->references('id')->on('category')->onDelete('cascade');
+        // $table->foreign('cate_id')->references('id')->on('category')->onDelete('cascade');
         $table->timestamps();
     });
 });
@@ -229,5 +229,14 @@ Route::get('query/count', function () {
     $data1 = DB::table('product')->where('price',$data)->take(1)->get();
     echo '<pre>';
     print_r ($data1);
+    echo '</pre>';
+});
+Route::get('query/join', function () {
+    $data = DB::table('news')
+        ->join('cate_news', 'news.cate_id', '=', 'cate_news.id')
+        ->select('news.*', 'cate_news.name')
+        ->get();
+    echo '<pre>';
+    print_r ($data);
     echo '</pre>';
 });
