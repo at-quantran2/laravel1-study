@@ -366,4 +366,7 @@ Route::get('form/layout', function () {
 });
 Route::post('form/layout', ['as' => 'register', 'uses' => 'Top@show']);
 
-
+//chuyen huong khi URL khong co
+Route::any('{all?}', function() {
+    return view('welcome');
+})->where('all','(.*)');
