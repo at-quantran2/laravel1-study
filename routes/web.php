@@ -361,9 +361,48 @@ Route::get('relation/many-to-many', function () {
 Route::view('form/layout', 'form.layout');
 Route::post('form/layout', ['as' => 'register', 'uses' => 'Top@show']);
 
-//chuyen huong khi URL khong co
+//Response
+Route::get('response/basic', function() {
+    return 'basicx res';
+});
+Route::get('response/json', function() {
+    $js = 
+    [
+        'id' => '1',
+        'name' => 'quan',
+        'age' => '20'
+    ];
+    return response()->json($js);
+});
+Route::get('response/xml', function() { 
+    $content = '<?xml version="1.0" encoding="UTF-8" ?>
+        <root>
+            <top>Top</top>
+            <list>
+                <course>PHP</course>
+                <course>C++</course>
+            </list>
+        </root>'; 
+    $status = 200;
+    $value = 'text/xml';
+    return response($content, $status)->header('Content-Type', $value);
+});
+
+
+
+
+
+
+
+
+
+
+
+//chuyen huong khi URL khong co de cuoi cung
 Route::any('{all?}', function() {
     return view('welcome');
 })->where('all','(.*)');
+
+
 
 
