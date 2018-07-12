@@ -358,9 +358,6 @@ Route::get('relation/many-to-many', function () {
 
 //Form Request
 
-// Route::get('form/layout', function() {
-//     return view('form.layout');
-// });
 Route::view('form/layout', 'form.layout');
 Route::post('form/layout', ['as' => 'register', 'uses' => 'Top@show']);
 
@@ -368,3 +365,5 @@ Route::post('form/layout', ['as' => 'register', 'uses' => 'Top@show']);
 Route::any('{all?}', function() {
     return view('welcome');
 })->where('all','(.*)');
+
+

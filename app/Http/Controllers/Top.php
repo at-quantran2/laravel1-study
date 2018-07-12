@@ -16,7 +16,7 @@ class Top extends Controller
             'name' => 'required|unique:courses,course',    
             'teacher' => 'required',   
             'price' => 'required',
-            'image' => 'required'
+            'image' => 'required|image|max:150'
             ],
             [
                 'name.required' => 'Nhap ten mon hoc',
