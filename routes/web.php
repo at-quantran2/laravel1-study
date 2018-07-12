@@ -356,4 +356,14 @@ Route::get('relation/many-to-many', function () {
     echo '</pre>';
 });
 
+//Form Request
+
+// Route::get('form/layout', function() {
+//     return view('form.layout');
+// });
+Route::get('form/layout', function () {
+    return view('form.layout');
+});
+Route::post('form/layout', ['as' => 'register', 'uses' => 'Top@show']);
+
 
