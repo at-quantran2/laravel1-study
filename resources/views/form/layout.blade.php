@@ -5,18 +5,21 @@
         @endforeach
     </ul>
 @endif --}}
-<form action="{!! route('register') !!}" method="POST">
+<form enctype="multipart/form-data" action="{!! route('register') !!}" method="POST">
     @csrf
-    <label for="">Course Name</label><br>
+    <label>Course Name</label><br>
     <input type="text" name="name">
     {!! $errors->first('name') !!}
     <br>
-    <label for="">Teacher</label><br>
+    <label>Teacher</label><br>
     <input type="text" name="teacher">
     {!! $errors->first('teacher') !!}<br>
-    <label for="">Price</label><br>
+    <label>Price</label><br>
     <input type="text" name="price">
     {!! $errors->first('price') !!}<br>
+    <label>Image</label><br>
+    <input type="file" name="image"><br>
+    {!! $errors->first('image') !!}<br>
     <input type="submit" value="Send">
 
 </form>

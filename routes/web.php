@@ -361,9 +361,7 @@ Route::get('relation/many-to-many', function () {
 // Route::get('form/layout', function() {
 //     return view('form.layout');
 // });
-Route::get('form/layout', function () {
-    return view('form.layout');
-});
+Route::view('form/layout', 'form.layout');
 Route::post('form/layout', ['as' => 'register', 'uses' => 'Top@show']);
 
 //chuyen huong khi URL khong co
