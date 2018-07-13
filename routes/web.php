@@ -16,7 +16,6 @@ use App\Images;
 use App\Colors;
 use App\Cars;
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -417,6 +416,10 @@ Route::get('response/macro/contact', function () {
 Route::get('authen/login', 'StudentController@getLogin' )->name('getLogin');
 Route::post('authen/login', 'StudentController@postlogin' )->name('postLogin');
 
+Route::get('authentication/getRegister', 'Auth\RegisterController@getRegister')->name('getRegister');
+Route::post('authentication/postRegister', 'Auth\RegisterController@postRegister')->name('postRegister');
+
+Route::view('see', 'auth.passwords.email');
 
 //chuyen huong khi URL khong co de cuoi cung
 Route::any('{all?}', function() {
@@ -426,3 +429,7 @@ Route::any('{all?}', function() {
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
