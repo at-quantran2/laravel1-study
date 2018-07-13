@@ -413,6 +413,9 @@ Route::get('response/macro/contact', function () {
     return response()->contact('edit');
 });
 
+//Authentication
+Route::get('authen/login', 'StudentController@getLogin' )->name('getLogin');
+Route::post('authen/login', 'StudentController@postlogin' )->name('postLogin');
 
 
 //chuyen huong khi URL khong co de cuoi cung

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TopRequest extends FormRequest
+class StudentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,14 @@ class TopRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:courses,course',    
-            'teacher' => 'required',   
-            'price' => 'required'
+            'user_name' => 'required',
+            'password' => 'required',
         ];
     }
     public function messages () {
         return [
-            'name.required' => 'Nhap ten mon hoc',
-            'teacher.required' => 'Nhap ten giang vien',
-            'price.required' => 'Nhap gia',
-            'name.unique'=> 'Ten Mon hoc da ton tai'
+            'user_name.required' => 'Nhap username',
+            'password.required' => 'Nhap password',
         ];
     }
 }

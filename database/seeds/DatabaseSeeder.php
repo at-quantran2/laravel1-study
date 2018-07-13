@@ -14,12 +14,13 @@ class DatabaseSeeder extends Seeder
         // $this->call(ProductTableSeeder::class);
         // $this->call(NewsTableSeeder::class);
         // $this->call(CateNewsTableSeeder::class);
-        // $this->call(ImagesTableSeeder::class);
-        $this->call([
-            CarsTableSeeder::class,
-            ColorsTableSeeder::class,
-            CarColorsTableSeeder::class,
-        ]);
+        $this->call(ImagesTableSeeder::class);
+        // $this->call([
+        //     CarsTableSeeder::class,
+        //     ColorsTableSeeder::class,
+        //     CarColorsTableSeeder::class,
+        // ]);
+        $this->call(StudentsTableSeeder::class);
     }
 }
 class ProductTableSeeder extends Seeder
@@ -111,6 +112,18 @@ class CarColorsTableSeeder extends Seeder
             ['car_id' => 2, 'color_id' => 3],
             ['car_id' => 4, 'color_id' => 3],
             ['car_id' => 2, 'color_id' => 5]
+        ]);
+    }
+}
+class StudentsTableSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('students')->insert([
+            ['user_name' =>'Quan', 'password' => Hash::make(12345), 'level' => 1 ],
+            ['username' =>'Nam', 'password' => bcrypt(12345), 'level' => 2],
+            ['user_name' =>'Lan', 'password' => Hash::make(12345), 'level' => 2],
+            ['user_name' =>'Tuan', 'password' => bcrypt(12345), 'level' => 1],
         ]);
     }
 }
