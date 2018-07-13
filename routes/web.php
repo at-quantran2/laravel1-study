@@ -422,16 +422,14 @@ Route::post('authentication/postRegister', 'Auth\RegisterController@postRegister
 Route::get('authentication/getLogin', 'Auth\RegisterController@getLogin')->name('getLogin');
 Route::post('authentication/postLogin', 'Auth\RegisterController@postLogin')->name('postLogin');
 
+Route::get('authentication/demo', function () {
+    return view('test-view.test');
+})->name('demoRedirect');
 
 //chuyen huong khi URL khong co de cuoi cung
 // Route::any('{all?}', function() {
 //     return view('welcome');
 // })->where('all','(.*)');
 
-
-
-
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

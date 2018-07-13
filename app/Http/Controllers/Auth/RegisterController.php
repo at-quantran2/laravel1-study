@@ -94,7 +94,8 @@ class RegisterController extends Controller
     {
         $auth = $request->only('email', 'password');
         if (Auth::attempt($auth)) {
-            echo "Success";
+            // return redirect('authentication/demo');
+            return redirect()->route('demoRedirect');
         } else {
             echo "fail";
         }
