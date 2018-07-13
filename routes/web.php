@@ -16,6 +16,7 @@ use App\Images;
 use App\Colors;
 use App\Cars;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -359,9 +360,9 @@ Route::get('relation/many-to-many', function () {
 //Form Request
 
 Route::view('form/layout', 'form.layout');
-Route::post('form/layout', ['as' => 'register', 'uses' => 'Top@show']);
+Route::post('form/layout', 'Top@show')->name('register');
 
-//Response
+//Response JSON, XML
 Route::get('response/basic', function() {
     return 'basicx res';
 });
@@ -388,14 +389,20 @@ Route::get('response/xml', function() {
     return response($content, $status)->header('Content-Type', $value);
 });
 
-
-
-
-
-
-
-
-
+//Reponse redirect
+Route::get('response/demo', function () {
+    return view('test-view.test');
+})->name('demo');
+Route::get('response/redirect', function () {
+    return redirect()->route('demo')->with(['name'=> 'Quasn']);
+});
+Route::get('response/redirect/back', function () {
+    return redirect()->back();
+});
+Route::get('response/download', function () {
+    $url = 'images/Screenshot from 2018-02-24 23-12-41.png';
+    return  Storage::download($url);
+});
 
 
 //chuyen huong khi URL khong co de cuoi cung

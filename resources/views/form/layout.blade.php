@@ -5,6 +5,9 @@
         @endforeach
     </ul>
 @endif --}}
+
+{!! $axax !!}
+
 <form enctype="multipart/form-data" action="{!! route('register') !!}" method="POST">
     @csrf
     <label>Course Name</label><br>
