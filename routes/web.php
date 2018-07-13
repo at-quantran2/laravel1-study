@@ -404,6 +404,16 @@ Route::get('response/download', function () {
     return  Storage::download($url);
 });
 
+//Test Macro Service Provider
+Route::get('response/macro/cap', function () {
+    return response()->cap('hello top');
+    // return response()->max([3,1,5,6]);
+});
+Route::get('response/macro/contact', function () {
+    return response()->contact('edit');
+});
+
+
 
 //chuyen huong khi URL khong co de cuoi cung
 Route::any('{all?}', function() {
