@@ -419,12 +419,14 @@ Route::post('authen/login', 'StudentController@postlogin' )->name('postLogin');
 Route::get('authentication/getRegister', 'Auth\RegisterController@getRegister')->name('getRegister');
 Route::post('authentication/postRegister', 'Auth\RegisterController@postRegister')->name('postRegister');
 
-Route::view('see', 'auth.passwords.email');
+Route::get('authentication/getLogin', 'Auth\RegisterController@getLogin')->name('getLogin');
+Route::post('authentication/postLogin', 'Auth\RegisterController@postLogin')->name('postLogin');
+
 
 //chuyen huong khi URL khong co de cuoi cung
-Route::any('{all?}', function() {
-    return view('welcome');
-})->where('all','(.*)');
+// Route::any('{all?}', function() {
+//     return view('welcome');
+// })->where('all','(.*)');
 
 
 

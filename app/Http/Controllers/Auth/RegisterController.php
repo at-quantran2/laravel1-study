@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -47,14 +49,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255|unique:users',
-    //         'password' => 'required|string|min:6|confirmed',
-    //     ]);
-    // }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
 
     /**
      * Create a new user instance after a valid registration.
@@ -83,5 +85,18 @@ class RegisterController extends Controller
         $user->password = Hash::make($request->password);
         $user->remember_token = $request->_token;
         $user->save();
+    }
+    public function getLogin()
+    {
+        return view('auth.login');
+    }
+    public function postLogin(LoginRequest $request)
+    {
+        $auth = $request->only('email', 'password');
+        if (Auth::attempt($auth)) {
+            echo "Success";
+        } else {
+            echo "fail";
+        }
     }
 }
