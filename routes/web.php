@@ -426,6 +426,9 @@ Route::get('authentication/demo', function () {
     return view('test-view.test');
 })->name('demoRedirect');
 
+//Restful Controller
+Route::resource('student', 'UserController');
+
 //chuyen huong khi URL khong co de cuoi cung
 // Route::any('{all?}', function() {
 //     return view('welcome');
